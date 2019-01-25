@@ -24,18 +24,52 @@ export const fetchCatError = (err) => {
   } 
 }
 
+export const ADOPT_CAT_REQUEST = 'ADOPT_CAT_REQUEST';
+export const adoptCatRequest = () => {
+  return {
+    type: 'ADOPT_CAT_REQUEST', 
+  } 
+}
 
 
+export const ADOPT_CAT_SUCCESS = 'ADOPT_CAT_SUCCESS';
+export const adoptCatSuccess = () => {
+  return {
+    type: 'ADOPT_CAT_SUCCESS', 
+  } 
+}
+
+export const ADOPT_CAT_ERROR = 'ADOPT_CAT_ERROR';
+export const adoptCatError = (err) => {
+  return {
+    type: 'ADOPT_CAT_ERROR', 
+    err
+  } 
+}
 
 
 export const fetchCat = () => {
   return(dispatch) => {
     dispatch(fetchCatRequest());
-    // console.log(`${API_BASE_URL}/cheeses`);
+    // console.log(`${API_BASE_URL}/cats`);
     // fetch(`${API_BASE_URL}/cat`)
-    fetch(`localhost:8080/cat`)
+    fetch(`localhost:8080/api/cat`)
       .then(res => res.json())
       .then(cat => dispatch(fetchCatSuccess(cat)))
       .catch(err => dispatch(fetchCatError(err)))
+  }
+}
+
+export const adoptCat = () => {
+  return(dispatch) => {
+    dispatch(adoptCatRequest());
+    fetch(`localhost:8080/api/cat`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+      .then(res => res.json())
+      .then(() => dispatch(adoptCatSuccess()))
+      .then(dispatch(fetchCat()))
+      .catch(err => dispatch(adoptCatError(err)))
   }
 }
