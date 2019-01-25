@@ -42,8 +42,7 @@ const dogsReducer = (state=initialState, action) => {
   }
   else if (action.type === ADOPT_DOG_SUCCESS) {
     return Object.assign({}, state, {
-      loading: false,
-      data: action.data,
+      loading: false
     })
   }
   // console.log(state);

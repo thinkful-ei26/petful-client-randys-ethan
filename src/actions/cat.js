@@ -67,9 +67,9 @@ export const adoptCat = () => {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
     })
-      .then(res => res.json())
+      // .then(res => res.json())
       .then(() => dispatch(adoptCatSuccess()))
-      .then(dispatch(fetchCat()))
-      .catch(err => dispatch(adoptCatError(err)))
+      .then(() => dispatch(fetchCat()))
+      .catch(err => dispatch(adoptCatError(err)));
   }
 }

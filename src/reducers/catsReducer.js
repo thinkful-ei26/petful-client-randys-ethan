@@ -43,7 +43,6 @@ const catsReducer = (state=initialState, action) => {
   else if (action.type === ADOPT_CAT_SUCCESS) {
     return Object.assign({}, state, {
       loading: false,
-      data: action.data,
     })
   }
   // console.log(state);

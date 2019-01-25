@@ -62,13 +62,13 @@ export const fetchDog = () => {
 export const adoptDog = () => {
   return(dispatch) => {
     dispatch(adoptDogRequest());
-    fetch(`${API_BASE_URL}/api/dog`, {
+    fetch(`${API_BASE_URL}/dog`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
     })
-      .then(res => res.json())
+      // .then(res => res.json())
       .then(() => dispatch(adoptDogSuccess()))
-      .then(dispatch(fetchDog()))
+      .then(() => dispatch(fetchDog()))
       .catch(err => dispatch(adoptDogError(err)))
   }
 }

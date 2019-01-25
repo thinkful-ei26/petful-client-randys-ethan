@@ -27,7 +27,7 @@ import * as serviceWorker from './serviceWorker';
 //   story: 'Owner Passed away'
 // };
 
-console.log(store.getState());
+// console.log(store.getState());
 
 
 ReactDOM.render(
@@ -36,7 +36,7 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'));
 
-  console.log(store.getState());
+  // console.log(store.getState());
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
