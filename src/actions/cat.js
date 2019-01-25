@@ -1,4 +1,4 @@
-
+import {API_BASE_URL} from '../config';
 
 export const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
 export const fetchCatRequest = () => {
@@ -53,9 +53,9 @@ export const fetchCat = () => {
     dispatch(fetchCatRequest());
     // console.log(`${API_BASE_URL}/cats`);
     // fetch(`${API_BASE_URL}/cat`)
-    fetch(`localhost:8080/api/cat`)
+    fetch(`${API_BASE_URL}/cat`)
       .then(res => res.json())
-      .then(cat => dispatch(fetchCatSuccess(cat)))
+      .then(data => dispatch(fetchCatSuccess(data)))
       .catch(err => dispatch(fetchCatError(err)))
   }
 }
@@ -63,7 +63,7 @@ export const fetchCat = () => {
 export const adoptCat = () => {
   return(dispatch) => {
     dispatch(adoptCatRequest());
-    fetch(`localhost:8080/api/cat`, {
+    fetch(`${API_BASE_URL}/cat`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'}
     })
