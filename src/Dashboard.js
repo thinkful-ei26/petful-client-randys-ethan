@@ -29,6 +29,8 @@ export class Dashboard extends React.Component {
     // } 
     if(this.props.dogToAdopt.data && this.props.catToAdopt.data){
       return <section>
+        <h1>Welcome to Petful</h1>
+        <p>Petful allows you to adopt either a cat or a dog at the click of a button. Pets are adopted on a first in, first out basis, so only one cat and one dog are available for adoption at a time. We hope you find a furry friend to take home with you!</p>
         <Pet animal={this.props.catToAdopt} className="cat" onAdoptPet={()=> this.props.dispatch(adoptCat())} />
         <Pet animal={this.props.dogToAdopt} className="dog" onAdoptPet={()=> this.props.dispatch(adoptDog())} />
       </section>
